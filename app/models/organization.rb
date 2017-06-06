@@ -3,4 +3,5 @@ class Organization < ApplicationRecord
   belongs_to :city
   has_many :gigs
   has_many :reviews, as: :reviewable
+  validates :name, :phone, :description, :address, :user, :city, presence: true
 end
