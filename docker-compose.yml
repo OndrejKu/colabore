@@ -4,14 +4,24 @@ services:
     image: postgres
     volumes:
       - 'data:/var/lib/postgresql/data'
+    ports:
+      - "5432"
   web:
     build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: bash start.sh
     volumes:
       - .:/colabore
+    volumes:
+      - box:/box
     ports:
       - "3000:3000"
     depends_on:
       - 'db'
+
+  box:
+    image: busybox
+    volumes:
+      - /box
 volumes:
   data:
+  box:
