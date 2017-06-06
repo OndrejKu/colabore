@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  enum kind: [:volunteer, :organization]
+  enum kind: [:Volunteer, :Organization]
   has_many :organizations
   has_many :volunteers
+  validates :kind, presence: true
 end

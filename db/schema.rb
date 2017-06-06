@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606130705) do
+ActiveRecord::Schema.define(version: 20170606213629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 20170606130705) do
     t.integer  "organization_id"
     t.string   "title"
     t.text     "description"
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.integer  "number_of_available_candidatures"
     t.boolean  "available"
     t.datetime "created_at",                       null: false
