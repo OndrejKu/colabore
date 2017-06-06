@@ -41,14 +41,15 @@ gem 'carrierwave'
 gem 'cloudinary'
 
 group :test do
-  gem "factory_girl_rails"
-  gem "ffaker"
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'byebug', platform: :mri
   gem 'pry-byebug'
+  gem "factory_girl_rails"
+  gem "ffaker"
 end
 
 group :development do
