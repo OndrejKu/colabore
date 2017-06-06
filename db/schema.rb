@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605143217) do
+ActiveRecord::Schema.define(version: 20170605232337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20170605143217) do
     t.datetime "updated_at",          null: false
     t.index ["gig_id"], name: "index_candidatures_on_gig_id", using: :btree
     t.index ["volunteer_id"], name: "index_candidatures_on_volunteer_id", using: :btree
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "capital"
+    t.integer  "state_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["state_id"], name: "index_cities_on_state_id", using: :btree
   end
 
   create_table "gigs", force: :cascade do |t|
@@ -49,6 +58,12 @@ ActiveRecord::Schema.define(version: 20170605143217) do
     t.index ["user_id"], name: "index_organizations_on_user_id", using: :btree
   end
 
+  create_table "regions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer  "reviewable_id"
     t.string   "reviewable_type"
@@ -56,6 +71,15 @@ ActiveRecord::Schema.define(version: 20170605143217) do
     t.text     "description"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string   "name"
+    t.string   "acronym"
+    t.integer  "region_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["region_id"], name: "index_states_on_region_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -88,7 +112,9 @@ ActiveRecord::Schema.define(version: 20170605143217) do
 
   add_foreign_key "candidatures", "gigs"
   add_foreign_key "candidatures", "volunteers"
+  add_foreign_key "cities", "states"
   add_foreign_key "gigs", "organizations"
   add_foreign_key "organizations", "users"
+  add_foreign_key "states", "regions"
   add_foreign_key "volunteers", "users"
 end
