@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605232337) do
+ActiveRecord::Schema.define(version: 20170606130705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,9 @@ ActiveRecord::Schema.define(version: 20170605232337) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "address"
+    t.integer  "city_id"
+    t.index ["city_id"], name: "index_organizations_on_city_id", using: :btree
     t.index ["user_id"], name: "index_organizations_on_user_id", using: :btree
   end
 
@@ -107,6 +110,8 @@ ActiveRecord::Schema.define(version: 20170605232337) do
     t.text     "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "city_id"
+    t.index ["city_id"], name: "index_volunteers_on_city_id", using: :btree
     t.index ["user_id"], name: "index_volunteers_on_user_id", using: :btree
   end
 
@@ -114,7 +119,9 @@ ActiveRecord::Schema.define(version: 20170605232337) do
   add_foreign_key "candidatures", "volunteers"
   add_foreign_key "cities", "states"
   add_foreign_key "gigs", "organizations"
+  add_foreign_key "organizations", "cities"
   add_foreign_key "organizations", "users"
   add_foreign_key "states", "regions"
+  add_foreign_key "volunteers", "cities"
   add_foreign_key "volunteers", "users"
 end
