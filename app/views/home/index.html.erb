@@ -1,1 +1,35 @@
 <h1>Colabore App</h1>
+
+<% if user_signed_in? %>
+  <% if current_user.Volunteer? %>
+    <%= form_for(Volunteer.new) do |f| %>
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true %>
+      </div>
+      <div class="field">
+        <%= f.label :phone %><br />
+        <%= f.text_field :phone %>
+      </div>
+      <div class="field">
+        <%= f.label :bio %><br />
+        <%= f.text_area :bio %>
+      </div>
+
+      <div class="field">
+        <%= f.label :city_id %><br />
+        <%= f.text_field :city_id %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Save" %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to "Create Organization Profile", new_organization_path %>
+  <% end %>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path %><br>
+  <%= link_to "Login", new_user_session_path %>
+<% end %>
