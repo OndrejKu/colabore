@@ -5,7 +5,7 @@ RSpec.describe VolunteersController, type: :controller do
 
   before(:each) do
     @request.env["devise.mapping"] = Devise.mappings[:user]
-    @current_user = FactoryGirl.create(:user)
+    @current_user = create(:user)
     sign_in @current_user
   end
 
@@ -19,7 +19,7 @@ RSpec.describe VolunteersController, type: :controller do
   describe "GET #show" do
     context "volunteer exists" do
       it "returns http success" do
-        volunteer = FactoryGirl.create(:volunteer)
+        volunteer = create(:volunteer)
         get :show, params: {id: volunteer.id}
         expect(response).to have_http_status(:success)
       end
@@ -27,7 +27,7 @@ RSpec.describe VolunteersController, type: :controller do
 
     context "volunteer doesn't exist" do
       it "redirects to volunteers index" do
-        volunteer_attributes = FactoryGirl.attributes_for(:volunteer) 
+        volunteer_attributes = attributes_for(:volunteer) 
         get :show, params: {id: 100}
         expect(response).to have_http_status(:not_found)
       end
@@ -36,13 +36,20 @@ RSpec.describe VolunteersController, type: :controller do
 
   describe "POST #create" do
     before(:each) do
-      @vol_attributes = FactoryGirl.attributes_for(:volunteer, user: @current_user)
+      @vol_attributes = attributes_for(:volunteer, user: @current_user)
       post :create, params: {volunteer: @vol_attributes}
     end
+    
     context "valid volunteer" do
       it "redirects to volunteer" do
         expect(response).to have_http_status(:found)
-        #expect(response).to redirect_to("/volunteers/#{Volunteer.last.id}")
+        expect(response).to redirect_to("/volunteers/#{Volunteer.last.id}")
+      end
+
+      it "with right arguments" do 
+        expect(Volunteer.last.user).to eql(@current_user)
+        expect(Volunteer.last.name).to eql(@vol_attributes.name)
+        expect(Volunteer.last.city).to eql(@vol_attributes.city)
       end
     end
   end

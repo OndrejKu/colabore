@@ -10,12 +10,11 @@ class VolunteersController < ApplicationController
   end
 
   def create
-    # TODO authentication
     @volunteer = Volunteer.new(volunteer_params)
-
+    authorize! :create, @volunteer
     respond_to do |format|
       if @volunteer.save
-        format.html { redirect_to show_volunteer_url(@volunteer) }
+        format.html { redirect_to volunteer_url(@volunteer) }
       else
         format.html { redirect_to main_app.root_url, notice: @volunteer.errors }
       end
@@ -23,9 +22,23 @@ class VolunteersController < ApplicationController
   end
 
   def update
+    authorize! :update, @volunteer
+    respond_to do |format|
+      if @volunteer.update(volunteer_params)
+        format.html { redirect_to volunteer_url(@volunteer) }
+      else
+        format.html { redirect_to main_app.root_url, notice: @volunteer.errors }
+      end
+    end
   end
 
   def destroy
+    authorize! :destroy, @volunteer
+    @volunteer.destroy
+
+    respond_to do |format|
+      format.json { head :no_content }
+    end
   end
 
   private 
@@ -35,6 +48,6 @@ class VolunteersController < ApplicationController
   end
 
   def volunteer_params
-    params.require(:volunteer).permit(:id, :name).merge(user: current_user)
+    params.require(:volunteer).permit(:id, :name, :phone, :bio, :city, :city_id).merge(user: current_user)
   end
 end

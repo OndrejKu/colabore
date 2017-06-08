@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   enum kind: [:Volunteer, :Organization]
-  has_many :organizations
-  has_many :volunteers
+  has_one :organization
+  has_one :volunteer
   validates :kind, presence: true
 end
