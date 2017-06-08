@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :volunteers
 
   devise_for :users, controllers: { registrations: 'registrations' }
@@ -7,4 +8,5 @@ Rails.application.routes.draw do
 
   resources :organizations
   resources :gigs
+  resources :cities, only: :index
 end
