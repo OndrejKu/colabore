@@ -11,7 +11,6 @@ services:
     command: bash start.sh
     volumes:
       - .:/colabore
-    volumes:
       - box:/box
     ports:
       - "3000:3000"
