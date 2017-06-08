@@ -39,6 +39,7 @@ gem 'materialize-sass'
 gem 'material_icons'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'will_paginate', '~> 3.1.0'
 
 group :test do
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
