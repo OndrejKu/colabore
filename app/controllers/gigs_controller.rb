@@ -3,7 +3,7 @@ class GigsController < ApplicationController
   before_action :set_gig, only: [:show, :edit, :update, :destroy]
 
   def index
-    @gigs = @organization.gigs.all #paginate(page: params[:page])
+    @gigs = @organization.gigs.paginate(page: params[:page])
   end
 
   def show
