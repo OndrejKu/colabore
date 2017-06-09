@@ -1,0 +1,27 @@
+<%= form_for(candidature) do |f| %>
+  <% if candidature.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(candidature.errors.count, "error") %> prohibited this candidature from being saved:</h2>
+
+      <ul>
+      <% candidature.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :introduction_letter %>
+    <%= f.text_area :introduction_letter %>
+  </div>
+
+  <div class="field">
+    <%= f.label :accepted %>
+    <%= f.check_box :accepted %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
