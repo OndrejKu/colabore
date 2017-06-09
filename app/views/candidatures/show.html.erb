@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Introduction letter:</strong>
+  <%= @candidature.introduction_letter %>
+</p>
+
+<p>
+  <strong>Accepted:</strong>
+  <%= @candidature.accepted %>
+</p>
+
+<%= link_to 'Edit', edit_candidature_path(@candidature) %> |
+<%= link_to 'Back', candidatures_path %>

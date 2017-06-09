@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :organizations
   resources :gigs
   resources :cities, only: :index
+  resources :candidatures
 end
