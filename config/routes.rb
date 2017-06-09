@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :cities, only: :index
   resources :candidatures
   resources :reviews
+
 end
