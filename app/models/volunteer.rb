@@ -1,4 +1,5 @@
 class Volunteer < ApplicationRecord
+  include PolymorphicType
   belongs_to :user
   belongs_to :city
   has_many :candidatures

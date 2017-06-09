@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :gigs
   resources :cities, only: :index
   resources :candidatures
+  resources :reviews
 end

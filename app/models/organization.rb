@@ -1,4 +1,5 @@
 class Organization < ApplicationRecord
+  include PolymorphicType
   self.per_page = 10
   belongs_to :user
   belongs_to :city
