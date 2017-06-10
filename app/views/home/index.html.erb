@@ -2,12 +2,9 @@
 
 <% if user_signed_in? %>
   <% if current_user.Volunteer? %>
-    
+
   <% else %>
     <%= link_to "Create Organization Profile", new_organization_path %>
   <% end %>
-  
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path %><br>
-  <%= link_to "Login", new_user_session_path %>
+
 <% end %>
