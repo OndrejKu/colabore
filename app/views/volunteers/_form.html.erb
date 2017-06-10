@@ -1,0 +1,52 @@
+<section id="volunteer">
+  <div class="container-fluid pt-3">
+    <div class="row">
+      <div class="col s4 offset-s4">
+        <div class="row login-form">
+          <div class="col s12">
+            <div class="card hoverable">
+              <div class="card-content">
+                <span class="card-title center">Volunteer's Profile</span>
+                <div class="divider"></div>
+                <%= form_for(volunteer, class: 'simple_form') do |f| %>
+                  <div class="form-inputs row">
+                    <div class="input-field col s12">
+                      <%= f.text_field :name, class: 'validate string', autofocus: true, required: true %>
+                      <%= f.label :name, class: 'name required' do %>
+                        Name
+                      <% end %>
+                    </div>
+                    <div class="input-field col s12">
+                      <%= f.text_field :phone, class: 'validate string', autofocus: true, required: true %>
+                      <%= f.label :phone, class: 'phone required' do %>
+                        Phone
+                      <% end %>
+                    </div>
+                    <div class="input-field col s12">
+                      <%= f.text_area :bio, class: ''%>
+                      <%= f.label :bio do %>
+                        Bio
+                      <% end %>
+                    </div>
+                    <div class="input-field col s12">
+                      <%= f.label :city_id %><br />
+                      <%= f.select :city_id, [], {}, {class: "select-city"} %>
+                    </div>
+                  </div>
+                  <div class="form-actions center">
+                    <i class="btn waves-effect waves-input-wrapper" style="">
+                      <%= f.submit "Save", class: 'waves-button-input' %>
+                    </i>
+                  </div>
+                <% end %>
+                <div class="card-action">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
