@@ -52,7 +52,7 @@ docker-compose up --build
 ```
 ### 8. Add the original repository as a source in your local repository
 ```
-git remote add upstream https://github.com/andreleoni/noPonto
+git remote add upstream https://github.com/ondrejKu/colabore
 ```
 ### 9. Sync your repository with the original
 ```
