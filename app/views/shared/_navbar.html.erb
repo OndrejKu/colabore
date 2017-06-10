@@ -1,0 +1,36 @@
+<header>
+  <nav>
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="<%= root_path %>" class="brand-logo">
+          <%= image_tag "logo.png", style: "width: 50px;" %>
+        </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#">Feed</a></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Logout", :destroy_user_session, method: :delete %></li>
+            <li>
+              <%= link_to "Edit Profile", :new_volunteer, class: 'waves-effect waves-light btn' %>
+          <% else %>
+            <li><%= link_to "Login", :new_user_session %></li>
+            <li>
+              <%= link_to "Sign up", :new_user_registration, class: 'waves-effect waves-light btn' %>
+          <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<% if user_signed_in? %>
+  <!-- Modal Structure -->
+  <div id="modal_profile" class="modal">
+      <div class="modal-content">
+        
+         
+              </div>
+      <div class="modal-footer">
+      </div>
+  </div>
+<% end %>

@@ -1,5 +1,5 @@
 class VolunteersController < ApplicationController
-  before_action :set_volunteer, except: [:index, :create]
+  before_action :set_volunteer, only: [:show, :edit, :update, :destroy]
 
   def index
     @volunteers = Volunteer.all
@@ -7,6 +7,10 @@ class VolunteersController < ApplicationController
 
   def show
     
+  end
+
+  def new
+    @volunteer = Volunteer.new
   end
 
   def create

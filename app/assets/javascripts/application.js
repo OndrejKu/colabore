@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require materialize-sprockets
 //= require select2
 //= require select2_locale_pt-BR
 //= require js-routes
