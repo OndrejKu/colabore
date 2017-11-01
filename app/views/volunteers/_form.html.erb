@@ -1,7 +1,7 @@
 <section id="volunteer">
   <div class="container-fluid pt-3">
     <div class="row">
-      <div class="col s4 offset-s4">
+      <div class="col s8 offset-s4">
         <div class="row login-form">
           <div class="col s12">
             <div class="card hoverable">
@@ -11,24 +11,28 @@
                 <%= form_for(volunteer, class: 'simple_form') do |f| %>
                   <div class="form-inputs row">
                     <div class="input-field col s12">
+                      <i class="material-icons prefix">account_circle</i>
                       <%= f.text_field :name, class: 'validate string', autofocus: true, required: true %>
                       <%= f.label :name, class: 'name required' do %>
                         Name
                       <% end %>
                     </div>
                     <div class="input-field col s12">
+                      <i class="material-icons prefix">phone</i>
                       <%= f.text_field :phone, class: 'validate string', autofocus: true, required: true %>
                       <%= f.label :phone, class: 'phone required' do %>
                         Phone
                       <% end %>
                     </div>
                     <div class="input-field col s12">
-                      <%= f.text_area :bio, class: ''%>
+                      <i class="material-icons prefix">edit</i>
+                      <%= f.text_area :bio, class: 'materialize-textarea'%>
                       <%= f.label :bio do %>
                         Bio
                       <% end %>
                     </div>
                     <div class="input-field col s12">
+                      <i class="material-icons prefix">gps_fixed</i>
                       <%= f.label :city_id %><br />
                       <%= f.select :city_id, [], {}, {class: "select-city"} %>
                     </div>
@@ -40,7 +44,7 @@
                   </div>
                 <% end %>
                 <div class="card-action">
-                  
+
                 </div>
               </div>
             </div>
